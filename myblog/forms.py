@@ -1,4 +1,5 @@
 from flask_wtf import Form
+<<<<<<< HEAD
 from wtforms import (
     StringField,
     TextField,
@@ -15,6 +16,10 @@ class PostForm(Form):
 
     title = StringField('title',[DataRequired(),Length(max=255)])
     text = TextAreaField('Blog Content', [DataRequired()])
+=======
+from wtforms import StringField, TextField
+from wtforms.validators import DataRequired, Length
+>>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
 
 
 class CommentForm(Form):
@@ -27,6 +32,7 @@ class CommentForm(Form):
         validators=[DataRequired(), Length(max=255)])
 
     text = TextField(u'Comment', validators=[DataRequired()])
+<<<<<<< HEAD
 
 class LoginForm(Form):
     """Login Form"""
@@ -82,3 +88,5 @@ class OpenIDForm(Form):
     """OpenID Form."""
 
     openid_url = StringField('OpenID URL', [DataRequired(), URL()])
+=======
+>>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
