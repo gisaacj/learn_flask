@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask_sqlalchemy import SQLAlchemy
-<<<<<<< HEAD
 from myblog.extensions import bcrypt 
-=======
->>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
 
 # INIT the sqlalchemy object
 # Will be load the SQLALCHEMY_DATABASE_URI from config.py
@@ -14,13 +11,10 @@ posts_tags = db.Table('posts_tags',
     db.Column('post_id', db.String(45), db.ForeignKey('posts.id')),
     db.Column('tag_id', db.String(45), db.ForeignKey('tags.id')))
 
-<<<<<<< HEAD
 users_roles = db.Table('users_roles',
     db.Column('user_id', db.String(45), db.ForeignKey('users.id')),
     db.Column('role_id', db.String(45), db.ForeignKey('roles.id')))
 
-=======
->>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
 class User(db.Model):
     """Represents Proected users."""
 
@@ -34,7 +28,7 @@ class User(db.Model):
         backref='users',
         lazy='dynamic')
 
-<<<<<<< HEAD
+
     roles = db.relationship(
         'Role',
         secondary=users_roles,
@@ -47,18 +41,16 @@ class User(db.Model):
 
         default = Role.query.filter_by(name="default").one()
         self.roles.append(default)
-=======
+
     def __init__(self,id,username,password):
         self.id = id;
         self.username = username
         self.password = password
->>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
 
     def __repr__(self):
         """Define the string format for instance of User."""
         return "<Model User `{}`>".format(self.username)
 
-<<<<<<< HEAD
     def set_password(self, password):
         """Convert the password to cryptograph via flask-bcrypt"""
         return bcrypt.generate_password_hash(password)
@@ -108,8 +100,6 @@ class Role(db.Model):
     def __repr__(self):
         return "<Model Role `{}`>".format(self.name)
 
-=======
->>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
 class Post(db.Model):
     """Represent Proected posts."""
 

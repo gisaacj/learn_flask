@@ -2,21 +2,12 @@ from uuid import uuid4
 from os import path
 from datetime import datetime
 
-<<<<<<< HEAD
 from flask import render_template, Blueprint,redirect,url_for
 from sqlalchemy import func
 
 from myblog.models import db, User, Post, Tag, Comment, posts_tags
 from myblog.forms import CommentForm,PostForm,LoginForm,RegisterForm
 from flask_login import login_required,current_user
-=======
-from flask import render_template, Blueprint
-from sqlalchemy import func
-
-from myblog.models import db, User, Post, Tag, Comment, posts_tags
-from myblog.forms import CommentForm
->>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
-
 
 blog_blueprint = Blueprint(
     'blog',
@@ -71,11 +62,10 @@ def post(post_id):
         new_comment = Comment(name=form.name.data)
         new_comment.id = str(uuid4()) 
         new_comment.text = form.text.data
-<<<<<<< HEAD
+
         new_comment.date = datetime.now()
-=======
+
         new_comment.date = datetime.datetime.now()
->>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
         new_comment.post_id = post_id
         db.session.add(new_comment)
         db.session.commit()
@@ -121,7 +111,6 @@ def user(username):
                            posts=posts,
                            recent=recent,
                            top_tags=top_tags)
-<<<<<<< HEAD
 
 @blog_blueprint.route('/new', methods=['GET', 'POST'])
 @login_required
@@ -166,5 +155,3 @@ def edit_post(id):
     form.title.data = post.title
     form.text.data = post.text
     return render_template('edit_post.html', form=form, post=post)
-=======
->>>>>>> d9e898ed46d581d82db757af11c1a970699e5b49
